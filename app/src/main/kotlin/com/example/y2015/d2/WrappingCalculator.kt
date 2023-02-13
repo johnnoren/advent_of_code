@@ -15,4 +15,8 @@ class WrappingCalculator {
 
         return listOf(sideTypeA,sideTypeA,sideTypeB,sideTypeB,sideTypeC,sideTypeC)
     }
+
+    fun getSquareFeetNeeded(boxSizeList: List<BoxSize>) : Int{
+        return boxSizeList.sumOf { getSquareFeetNeeded(it) }
+    }
 }

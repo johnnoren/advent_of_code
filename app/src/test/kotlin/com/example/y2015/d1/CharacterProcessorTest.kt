@@ -3,8 +3,8 @@ package com.example.y2015.d1
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-internal class D1Test {
-    private val sut = D1()
+internal class CharacterProcessorTest {
+    private val sut = CharacterProcessor()
 
 /*  (()) and ()() both result in floor 0.
     ((( and (()(()( both result in floor 3.
