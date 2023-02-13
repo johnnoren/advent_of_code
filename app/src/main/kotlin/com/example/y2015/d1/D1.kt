@@ -1,7 +1,6 @@
-package com.example.y2015
+package com.example.y2015.d1
 
-import java.io.File
-import java.io.IOException
+import com.example.y2015.core.FileReader
 import java.lang.IllegalArgumentException
 
 class D1() {
@@ -38,10 +37,11 @@ class D1() {
 }
 
 fun main() {
-    val url = D1::class.java.getResource("/com/example/y2015/d1.txt")
-    val file = File(url?.file ?: throw IOException())
-    val symbolString = file.readText(Charsets.UTF_8)
+    val symbolString = FileReader().readString("/com/example/y2015/d1.txt")
     val d1 = D1()
 
     println(d1.getFloor(symbolString))
+
+    println(d1.getBasementCharacterPosition(symbolString))
+
 }

@@ -1,4 +1,4 @@
-package com.example.y2015
+package com.example.y2015.d1
 
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
