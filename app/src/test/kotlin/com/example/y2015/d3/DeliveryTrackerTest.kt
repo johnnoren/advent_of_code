@@ -12,10 +12,9 @@ internal class DeliveryTrackerTest {
     val deliveryTracker = DeliveryTracker()
     
     @Test
-    @DisplayName("Should return correct number of houses that received at least one delivery")
-    fun shouldReturnCorrectNumberOfHouses(){
+    @DisplayName("Should return correct number of houses that received at least one delivery from a single santa")
+    fun shouldReturnCorrectNumberOfHousesForOneSanta(){
         // Given
-        val criteria : (Int) -> Boolean = { it > 0 }
         val input1 = ">"
         val input1Expected = 2
         val input2 = "^>v<"
@@ -24,9 +23,36 @@ internal class DeliveryTrackerTest {
         val input3Expected = 2
 
         // When
-        var input1Actual = deliveryTracker.getNumberOfHouses(input1,criteria)
-        var input2Actual = deliveryTracker.getNumberOfHouses(input2,criteria)
-        var input3Actual = deliveryTracker.getNumberOfHouses(input3,criteria)
+        val input1Actual = deliveryTracker.getNumberOfHouses(input1,false)
+        val input2Actual = deliveryTracker.getNumberOfHouses(input2,false)
+        val input3Actual = deliveryTracker.getNumberOfHouses(input3,false)
+
+        // Then
+        assert(input1Actual == input1Expected)
+        assert(input2Actual == input2Expected)
+        assert(input3Actual == input3Expected)
+
+    }
+
+   /* ^v delivers presents to 3 houses, because Santa goes north, and then Robo-Santa goes south.
+    ^>v< now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
+    ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.*/
+
+    @Test
+    @DisplayName("Should return correct number of houses that received at least one delivery from santa or robot")
+    fun shouldReturnCorrectNumberOfHousesForTwoSantas(){
+        // Given
+        val input1 = "^v"
+        val input1Expected = 3
+        val input2 = "^>v<"
+        val input2Expected = 3
+        val input3 = "^v^v^v^v^v"
+        val input3Expected = 11
+
+        // When
+        val input1Actual = deliveryTracker.getNumberOfHouses(input1,true)
+        val input2Actual = deliveryTracker.getNumberOfHouses(input2,true)
+        val input3Actual = deliveryTracker.getNumberOfHouses(input3,true)
 
         // Then
         assert(input1Actual == input1Expected)
