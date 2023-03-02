@@ -1,6 +1,5 @@
 package com.example.y2015.d1
 
-import com.example.y2015.core.FileReader
 import java.lang.IllegalArgumentException
 
 class CharacterProcessor() {

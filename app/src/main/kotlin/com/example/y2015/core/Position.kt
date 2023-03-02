@@ -1,4 +1,4 @@
-package com.example.y2015.d3
+package com.example.y2015.core
 
 data class Position(val x: Int, val y: Int) {
     fun moveUp() = Position(x,y+1)

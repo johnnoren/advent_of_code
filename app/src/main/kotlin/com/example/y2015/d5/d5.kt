@@ -1,7 +1,7 @@
 package com.example.y2015.d5
 
 import com.example.y2015.core.FileReader
-import java.util.StringJoiner
+import com.example.y2015.d5.StringPredicate.*
 
 fun main() {
     val strings = FileReader().readLines("/com/example/y2015/d5.txt")
@@ -15,9 +15,9 @@ fun main() {
 
 private fun part1(strings: List<String>): Int {
     val conditions = listOf(
-        StringPredicate.CONTAINS_THREE_OR_MORE_VOWELS,
-        StringPredicate.CONTAINS_AT_LEAST_ONE_LETTER_TWICE_IN_A_ROW,
-        StringPredicate.DOES_NOT_CONTAIN_AB_CD_PQ_XY
+        CONTAINS_THREE_OR_MORE_VOWELS,
+        CONTAINS_AT_LEAST_ONE_LETTER_TWICE_IN_A_ROW,
+        DOES_NOT_CONTAIN_AB_CD_PQ_XY
     )
 
     return StringValidator().countValid(strings, conditions)
@@ -25,8 +25,8 @@ private fun part1(strings: List<String>): Int {
 
 private fun part2(strings: List<String>): Int {
     val conditions = listOf(
-        StringPredicate.CONTAINS_PAIR_OF_LETTERS_OCCURRING_AT_LEAST_TWICE,
-        StringPredicate.CONTAINS_AT_LEAST_ONE_LETTER_WHICH_REPEATS_WITH_LETTER_BETWEEN
+        CONTAINS_PAIR_OF_LETTERS_OCCURRING_AT_LEAST_TWICE,
+        CONTAINS_AT_LEAST_ONE_LETTER_WHICH_REPEATS_WITH_LETTER_BETWEEN
     )
 
     return StringValidator().countValid(strings, conditions)

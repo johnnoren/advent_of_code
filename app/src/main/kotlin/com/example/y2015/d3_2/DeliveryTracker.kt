@@ -1,7 +1,8 @@
-package com.example.y2015.d3
+package com.example.y2015.d3_2
 
 import com.example.y2015.core.Position
 import java.util.InputMismatchException
+import kotlin.system.exitProcess
 
 class DeliveryTracker {
 
@@ -27,13 +28,16 @@ class DeliveryTracker {
         return uniquePositions.size
     }
 
+    // Changed to use partition. Learned about it here:
+    // https://github.com/0legg/adventofcode/blob/master/year2015/src/main/kotlin/net/olegg/aoc/year2015/day3/Day3.kt
     private fun splitDirections(directions: String) : List<String> {
-        val even: (Int) -> Boolean = { it % 2 == 0 }
-        val odd: (Int) -> Boolean = { it % 2 == 1 }
-        val directionsString1 = directions.toList().filterIndexed { index, _ -> even(index) }.joinToString("")
-        val directionsString2 = directions.toList().filterIndexed { index, _ -> odd(index) }.joinToString("")
+        return directions
+            .toList()
+            .withIndex()
+            .partition { it.index % 2 == 0 }
+            .toList()
+            .map { it.joinToString("") { indexedValue -> indexedValue.value.toString() } }
 
-        return listOf(directionsString1,directionsString2)
     }
 
 }
